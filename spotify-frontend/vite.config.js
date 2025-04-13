@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {},
+import tailwindcss from '@tailwindcss/vite'
+export default defineConfig({
+  server: {
+    proxy: {
+      '/uploads': 'http://localhost:5000',
+    },
   },
-  darkMode: "class", // Enable dark mode
-  plugins: [],
-}
+  plugins: [
+    tailwindcss(),
+  ],
+})
