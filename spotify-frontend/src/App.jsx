@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import AudioPlayer from './components/AudioPlayer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [songs, setSongs] = useState([
+    {
+      _id: '67fb6f34a51eae26a66333a6',
+      title: 'Welcome to New York',
+      artist: 'Anushka',
+      url: '/uploads/1744531252643-Welcome To New York (Taylor\'s Version)-yt.savetube.me.mp3',
+      coverImage: '/uploads/1744531252658-Taylor_Swift_-_Folklore.png',
+    },
+    // Add more songs if needed
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <h1>Audio Player</h1>
+      {songs.map((song) => (
+        <AudioPlayer key={song._id} song={song} />
+      ))}
+    </div>
+  );
 }
 
-export default App
+export default App;
